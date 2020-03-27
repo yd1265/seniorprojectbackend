@@ -1,0 +1,12 @@
+2020-03-06 20:33:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STUDENT(ID,'firstName'[*],'lastName')VALUES (10,'Ismatou', 'Conde') "; expected "identifier"; SQL statement:
+INSERT INTO student(id,'firstName','lastName')values (10,'Ismatou', 'Conde') [42001-197]
+2020-03-06 20:56:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STUDENT(ID,'firstName'[*],'lastName')VALUES (10,'Ismatou', 'Conde') "; expected "identifier"; SQL statement:
+INSERT INTO student(id,'firstName','lastName')values (10,'Ismatou', 'Conde') [42001-197]
+2020-03-06 20:59:13 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STUDENT(ID,'firstName'[*],'lastName')VALUES (10,'Ismatou', 'Conde') "; expected "identifier"; SQL statement:
+INSERT INTO student(id,'firstName','lastName')values (10,'Ismatou', 'Conde') [42001-197]
+2020-03-06 20:59:30 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STUDENT(ID,'firstName'[*],'lastName')VALUES (10,'Ismatou', 'Conde') "; expected "identifier"; SQL statement:
+INSERT INTO student(id,'firstName','lastName')values (10,'Ismatou', 'Conde') [42001-197]
