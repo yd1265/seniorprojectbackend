@@ -1,14 +1,17 @@
 package com.senior.project;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -18,7 +21,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.senior.project.exception.StudentNotFound;
 import com.senior.project.model.Student;
 import com.senior.project.restapi.StudentController;
 
@@ -99,19 +104,25 @@ public class StudentControllerTest {
 	        	.andExpect(status().is(200));
 		   
 	   }
-    
-  /*
+
   
   @Test
   public void postInvalidshould_Return404() throws Exception {
-    Student thes = new Student("Diallo", "Diallo");
-     thes.setId(1);
-    when(studentController.addStduent(thes)).thenReturn(thes);
+    Student wrongdata= new Student("Youssouf", "Diallo");
+      wrongdata.setId(1);
+    when(studentController.addStudent(wrongdata)).thenReturn(wrongdata);
     mvc.perform(post("http://localhost:8081/api/test/student/") 
     		.contentType(MediaType.APPLICATION_JSON)
-    		.content(this.objectMapper.writeValueAsString(thes)))
-            .andExpect(status().isBadRequest());
+    		.content(this.objectMapper.writeValueAsString(wrongdata)))
+            .andExpect(status().is(404));
   }
   
-  */
+  @Test()
+  public void notFoundUsershould_Return404() throws Exception {
+	  when(studentController.deleteStudent(2)).thenThrow(StudentNotFound.class);
+		mvc.perform(delete("http://localhost:8081/api/student/2")
+      		.contentType(MediaType.APPLICATION_JSON))
+      	   .andExpect(status().isNotFound());
+  } 
+  
 }
